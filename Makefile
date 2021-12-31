@@ -6,14 +6,14 @@
 #    By: jaesjeon <jaesjeon@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 14:33:20 by jaesjeon          #+#    #+#              #
-#    Updated: 2021/12/29 17:00:59 by jaesjeon         ###   ########.fr        #
+#    Updated: 2021/12/31 18:33:44 by jaesjeon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror -I.
-NAME = libft.a
+NAME = libftprintf.a
 AR = ar
 ARFLAGS = -rcus
 SRCDIR = ./libft
