@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 17:47:23 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/03 19:14:51 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/03 20:42:31 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ int	ft_printf(char *str, ...)
 	va_list 	ap;
 	int			cnt;
 	long long	var;
-	t_property	var_p;
+	t_property	*var_p;
 
 	va_start(ap, str);
-	var = va_arg(ap, str);
+	var = (long long)va_arg(ap, char *);
 	cnt = 0;
 	while (*str != '\0')
 	{
@@ -32,15 +32,16 @@ int	ft_printf(char *str, ...)
 		}
 		if (*str == '%')
 		{
-			var_p = make_struct(&str, var);
+			var_p = make_struct(&str);
 			if (var_p == NULL)
-				return (NULL);
+				return (-1);
 			cnt += print_var(var, var_p);
 		}
 	}
+	return (cnt);
 }
 
-t_property	*make_struct(char **origin, long long var)
+t_property	*make_struct(char **origin)
 {
 	t_property	*var_p;
 	char		*str;
@@ -51,36 +52,37 @@ t_property	*make_struct(char **origin, long long var)
 	str = *origin;
 	if (ft_strchr(TYPES, *(str + 1)) != 0)
 	{
-		var_p.print_type = *(str +1);
-		var_p.data_type = set_data_type(str + 1);
+		var_p->print_type = *(str +1);
+		var_p->data_type = set_data_type(str + 1);
 		str = str + 2;
 	}
 	else if (*(str + 1) == '%')
 	{
 		write(1, str, 1);
 		str = str + 2;
-		return (1);
 	}
 	else
-		str++;
-	return (0);
+		str++;	
+	return (var_p);
 }
 
 char	*set_data_type(char *str)
 {
-	if (*str == 'c' || *str == 'd' || *str == 'i' || *str == 'u' || *str == 'x'\
-			*str == 'X')
+	if (*str == 'c' || *str == 'd' || *str == 'i'\
+			|| *str == 'u' || *str == 'x' || *str == 'X')
 		return ("int");
 	else if (*str == 's' || *str == 'p')
 		return ("void *");
+	else
+		return (NULL);
 }
 
-int	print_var(long long var, t_property var_p)
+int	print_var(long long var, t_property *var_p)
 {
-	if (var_p.print_type == 's')
+	if (var_p->print_type == 's')
 	{
-		ft_putstr_fd(char *(var), 1);
-		return (ft_strlen(const char *(var)));
+		ft_putstr_fd((char *)var, 1);
+		return (ft_strlen((const char *)var));
 	}
 	return (0);
 }
