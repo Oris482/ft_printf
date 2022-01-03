@@ -6,7 +6,7 @@
 #    By: jaesjeon <jaesjeon@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 14:33:20 by jaesjeon          #+#    #+#              #
-#    Updated: 2021/12/31 18:33:44 by jaesjeon         ###   ########.fr        #
+#    Updated: 2022/01/03 19:25:14 by jaesjeon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,11 @@ CFLAGS = -Wall -Wextra -Werror -I.
 NAME = libftprintf.a
 AR = ar
 ARFLAGS = -rcus
-SRCDIR = ./libft
-OBJDIR = ./libft
-SRCS = ft_memset.c	\
+LIBFTCDIR = ./libft
+LIBFTODIR = ./libft
+PRINTFCDIR = .
+PRINTFODIR = .
+LIBFTC = ft_memset.c	\
 		ft_bzero.c	\
 		ft_memcpy.c	\
 		ft_memmove.c	\
@@ -51,41 +53,40 @@ SRCS = ft_memset.c	\
 		ft_putchar_fd.c	\
 		ft_putstr_fd.c	\
 		ft_putendl_fd.c	\
-		ft_putnbr_fd.c
-SRCS_BONUS = ft_lstnew.c	\
-			 ft_lstadd_front.c	\
-			 ft_lstsize.c	\
-			 ft_lstlast.c	\
-			 ft_lstadd_back.c	\
-			 ft_lstdelone.c	\
-			 ft_lstclear.c	\
-			 ft_lstiter.c	\
-			 ft_lstmap.c
-_OBJS = $(SRCS:.c=.o)
-_OBJS_BONUS = $(SRCS_BONUS:.c=.o)
-OBJS = $(addprefix $(OBJDIR)/, $(_OBJS))
-OBJS_BONUS = $(addprefix $(OBJDIR)/, $(_OBJS_BONUS))
+		ft_putnbr_fd.c	\
+		ft_lstnew.c	\
+		ft_lstadd_front.c	\
+		ft_lstsize.c	\
+		ft_lstlast.c	\
+		ft_lstadd_back.c	\
+		ft_lstdelone.c	\
+		ft_lstclear.c	\
+		ft_lstiter.c	\
+		ft_lstmap.c
+PRINTFC = ft_printf.c
+_LIBFTOBJS = $(LIBFT:.c=.o)
+_PRINTFOBJS = $(PRINTF:.c=.o)
+LIBFTOBJS = $(addprefix $(LIBFTODIR)/, $(_LIBFTOBJS))
+PRINTFOBJS = $(addprefix $(PRINTFODIR)/, $(_PRINTFOBJS))
 
-ifdef WITH_BONUS
-	OBJS += $(OBJS_BONUS)
-endif
-
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): libft.a $(PRINTFOBJS)
 	$(AR) $(ARFLAGS) $@ $^
 
-%.o: %.c libft.h
+libft.a: $(LIBFTOBJS)
+	$(AR) $(ARFLAGS) $@ $^
+
+%.o: %.c libft.h ft_printf.h
 
 clean:
-	$(RM) $(OBJS) $(OBJS_BONUS)
+	$(RM) $(LIBFTOBJS) $(PRINTFOBJS)
 
 fclean: clean
 	$(RM) $(NAME)
+	$(RM) libft.a
 
 re: fclean all
 
-bonus:
-	@make WITH_BONUS=1 all
