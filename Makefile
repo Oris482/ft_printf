@@ -6,7 +6,7 @@
 #    By: jaesjeon <jaesjeon@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 14:33:20 by jaesjeon          #+#    #+#              #
-#    Updated: 2022/01/03 19:26:38 by jaesjeon         ###   ########.fr        #
+#    Updated: 2022/01/04 16:55:06 by jaesjeon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ LIBFTC = ft_memset.c	\
 		ft_putstr_fd.c	\
 		ft_putendl_fd.c	\
 		ft_putnbr_fd.c	\
+		ft_putvnbr_fd.c	\
 		ft_lstnew.c	\
 		ft_lstadd_front.c	\
 		ft_lstsize.c	\
@@ -73,10 +74,7 @@ PRINTFOBJS = $(addprefix $(PRINTFODIR)/, $(_PRINTFOBJS))
 
 all: $(NAME)
 
-$(NAME): libft.a $(PRINTFOBJS)
-	$(AR) $(ARFLAGS) $@ $^
-
-libft.a: $(LIBFTOBJS)
+$(NAME): $(LIBFTOBJS) $(PRINTFOBJS)
 	$(AR) $(ARFLAGS) $@ $^
 
 %.o: %.c libft.h ft_printf.h

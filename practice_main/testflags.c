@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 13:55:30 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/01 16:41:27 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/04 16:10:15 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,11 @@ int	main(void)
 	printf("*****testing +, space with no num*****\n");
 	printf("Hello, %+c\n", 'a');
 	printf("Hello, % c\n", 'a');
-	printf("Hello, %+s\n", 'abc');
-	printf("Hello, % s\n", 'abc');
+//	printf("Hello, %+s\n", 'abc');
+//	printf("Hello, % s\n", 'abc');
+
+	printf("*****strange num*****\n");
+	printf("%d\n", 0123);
+//	printf("%d\n", 0899);
+	printf("%d\n", 0x899);
 }

@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 10:17:29 by jaesjeon          #+#    #+#             */
-/*   Updated: 2021/11/24 16:57:43 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/04 17:38:41 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# define DEC "0123456789"
+# define LOWER_HEX "0123456789abcdef"
+# define UPPER_HEX "0123456789ABCDEF"
 
 int		ft_isalpha(int c);
 
@@ -83,6 +86,8 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 
 void	ft_putnbr_fd(int n, int fd);
+
+void	ft_putvnbr_fd(long long n, char *type, int fd);
 
 typedef struct s_list
 {
