@@ -6,7 +6,7 @@
 #    By: jaesjeon <jaesjeon@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 14:33:20 by jaesjeon          #+#    #+#              #
-#    Updated: 2022/01/04 16:55:06 by jaesjeon         ###   ########.fr        #
+#    Updated: 2022/01/04 19:59:00 by jaesjeon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,8 @@ LIBFTC = ft_memset.c	\
 		ft_lstclear.c	\
 		ft_lstiter.c	\
 		ft_lstmap.c
-PRINTFC = ft_printf.c
+PRINTFC = ft_printf.c	\
+		  cal_len.c
 _LIBFTOBJS = $(LIBFTC:.c=.o)
 _PRINTFOBJS = $(PRINTFC:.c=.o)
 LIBFTOBJS = $(addprefix $(LIBFTODIR)/, $(_LIBFTOBJS))
