@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 17:47:54 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/04 19:01:51 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/04 20:51:51 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 # define FLAGS "0-+ #"
 # define PRECISION "."
-# define TYPES "cspdiuxX"
+# define TYPES "cspdiuxX%"
 
 typedef struct s_property
 {
@@ -30,6 +30,6 @@ typedef struct s_property
 int			ft_printf(char *str, ...);
 t_property	*make_struct(char **origin);
 char		*set_data_type(char *str);
-int			print_var(va_list ap, long long *var, t_property *var_p);
+int			print_var(va_list *ap, t_property *var_p);
 int			cal_len(long long var, char *type);
 #endif

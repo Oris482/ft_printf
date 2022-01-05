@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 17:47:23 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/04 19:44:09 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/05 14:29:44 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@ int	ft_printf(char *str, ...)
 {
 	va_list		ap;
 	int			cnt;
-	long long	var;
 	t_property	*var_p;
 
 	va_start(ap, str);
-	var = (long long)va_arg(ap, void *);
 	cnt = 0;
 	while (*str != '\0')
 	{
@@ -36,7 +34,8 @@ int	ft_printf(char *str, ...)
 			var_p = make_struct(&str);
 			if (var_p == NULL)
 				return (-1);
-			cnt += print_var(ap, &var, var_p);
+			if (*(var_p->data_type) != 0)
+				cnt += print_var(&ap, var_p);
 			free(var_p);
 		}
 	}
@@ -56,11 +55,6 @@ t_property	*make_struct(char **str)
 		var_p->data_type = set_data_type((*str) + 1);
 		*str = (*str) + 2;
 	}
-	else if (*((*str) + 1) == '%')
-	{
-		write(1, (*str), 1);
-		(*str) = (*str) + 2;
-	}
 	else
 		(*str)++;
 	return (var_p);
@@ -74,25 +68,43 @@ char	*set_data_type(char *str)
 	else if (*str == 's' || *str == 'p')
 		return ("8");
 	else
-		return (NULL);
+		return ("%");
 }
 
-int	print_var(va_list ap, long long *var, t_property *var_p)
+int	address_hex(void *address)
 {
-	int cnt;
+	long long	dec_add;
+	int			cnt;
 
+	cnt = 2;
+	dec_add = (long long)address;
+	write(1, "0x", 2);
+	ft_putvnbr_fd(dec_add, "p", 1);
+	return (cnt + cal_len(dec_add, "p"));
+}
+
+int	print_var(va_list *ap, t_property *var_p)
+{
+	int			cnt;
+	long long	var;
+
+	if (*(var_p->data_type) == '%')
+	{
+		write(1, "%", 1);
+		return (1);
+	}
+	if (*(var_p->data_type) == '4')
+		var = (long long)va_arg(*ap, int);
+	else
+		var = (long long)va_arg(*ap, void *);
 	if (var_p->print_type == 's')
-		ft_putstr_fd((char *)(*var), 1);
+		ft_putstr_fd((char *)var, 1);
 	else if (var_p->print_type == 'c')
 		write(1, &var, 1);
 	else if (var_p->print_type == 'p')
-		return (0);
+		return (address_hex((void *)var));
 	else
-		ft_putvnbr_fd(*var, &(var_p->print_type), 1);
-	cnt = cal_len(*var, &(var_p->print_type));
-	if(*(var_p->data_type) == '4')
-		*var = (long long)va_arg(ap, int);
-	else
-		*var = (long long)va_arg(ap, void *);
+		ft_putvnbr_fd(var, &(var_p->print_type), 1);
+	cnt = cal_len(var, &(var_p->print_type));
 	return (cnt);
 }

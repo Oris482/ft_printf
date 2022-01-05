@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 16:31:40 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/04 18:09:33 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/05 14:26:39 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static long long	set_minvalue(char *type)
 {
 	long long	minvalue;
 
-	if (*type == 'l')
+	if (*type == 'l' || *type == 'p')
 		minvalue = -9223372036854775807;
 	else if (*type == 'u')
 		minvalue = 0;
@@ -38,7 +38,7 @@ static long long	set_minvalue(char *type)
 
 static char	*set_base(char *type)
 {
-	if (*type == 'x')
+	if (*type == 'x' || *type == 'p')
 		return (LOWER_HEX);
 	else if (*type == 'X')
 		return (UPPER_HEX);
@@ -48,7 +48,7 @@ static char	*set_base(char *type)
 
 static long long	set_num(long long n, char *type)
 {
-	if (*type == 'l')
+	if (*type == 'l' || *type == 'p')
 		return (n);
 	else if (*type == 'u')
 		return ((unsigned int)n);
