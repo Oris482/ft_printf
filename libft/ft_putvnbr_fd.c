@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 16:31:40 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/05 14:26:39 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/07 18:27:15 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static long long	set_num(long long n, char *type)
 {
 	if (*type == 'l' || *type == 'p')
 		return (n);
-	else if (*type == 'u')
+	else if (*type == 'u' || *type == 'x' || *type == 'X')
 		return ((unsigned int)n);
 	else
 		return ((int)n);
@@ -72,7 +72,7 @@ void	ft_putvnbr_fd(long long n, char *type, int fd)
 	{
 		if (n == minvalue)
 		{
-			tail = base[n % n_base];
+			tail = base[(n % n_base) * (-1)];
 			n = n / n_base;
 		}
 		n *= (-1);

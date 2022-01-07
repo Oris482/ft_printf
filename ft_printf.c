@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 17:47:23 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/05 16:47:54 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/07 18:33:48 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ int	print_var(va_list *ap, t_property *var_p)
 		var = (long long)va_arg(*ap, int);
 	else
 		var = (long long)va_arg(*ap, void *);
+	if (var_p->print_type == 's' && (void *)var == NULL)
+		var = (long long)("(null)");
 	if (var_p->print_type == 's')
 		ft_putstr_fd((char *)var, 1);
 	else if (var_p->print_type == 'c')

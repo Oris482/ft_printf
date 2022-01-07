@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 17:22:08 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/05 14:50:06 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/07 18:25:10 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static long long	set_num(long long n, char *type)
 {
 	if (*type == 'l' || *type == 'p')
 		return (n);
-	else if (*type == 'u')
+	else if (*type == 'u' || *type == 'x' || *type == 'X')
 		return ((unsigned int)n);
 	else
 		return ((int)n);
@@ -36,6 +36,8 @@ int	cal_len(long long var, char *type)
 		return (ft_strlen((char *)var));
 	else
 	{
+		if (var < 0 && (*type == 'd' || *type == 'i'))
+			cnt++;
 		var = set_num(var, type);
 		if (var == 0)
 			return (1);
