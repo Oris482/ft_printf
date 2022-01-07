@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 17:47:23 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/07 18:33:48 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/07 19:26:46 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,13 @@ char	*set_data_type(char *str)
 
 int	address_hex(void *address)
 {
-	long long	dec_add;
-	int			cnt;
+	unsigned long long	dec_add;
+	int					cnt;
 
 	cnt = 2;
-	dec_add = (long long)address;
+	dec_add = (unsigned long long)address;
 	write(1, "0x", 2);
-	ft_putvnbr_fd(dec_add, "p", 1);
+
 	return (cnt + cal_len(dec_add, "p"));
 }
 
