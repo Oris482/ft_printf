@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 17:47:23 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/05 14:29:44 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/05 16:47:54 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft/libft.h"
 #include <stdarg.h>
 
-int	ft_printf(char *str, ...)
+int	ft_printf(const char *str, ...)
 {
 	va_list		ap;
 	int			cnt;
@@ -31,7 +31,7 @@ int	ft_printf(char *str, ...)
 		}
 		if (*str == '%')
 		{
-			var_p = make_struct(&str);
+			var_p = make_struct((char **)&str);
 			if (var_p == NULL)
 				return (-1);
 			if (*(var_p->data_type) != 0)

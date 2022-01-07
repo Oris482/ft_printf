@@ -1,4 +1,0 @@
-[submodule "Dependencies/Air-Tester"]
-	path = Dependencies/Air-Tester
-	url = https://github.com/Hyxogen/Air-Tester.git
-	branch = development

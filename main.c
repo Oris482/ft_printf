@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 15:02:09 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/05 14:59:21 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/05 17:25:12 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,23 @@ int	main(void)
 	printf("%d\n", cnt);
 	cnt = ft_printf("cnt = %p\n", &mall);
 	ft_printf("%d\n", cnt);
+	printf("--------------------------------\n");
+
+	cnt = ft_printf("%c", NULL);
+	ft_printf("   %d\n", cnt);
+//	cnt = ft_printf("%s", NULL);
+//	ft_printf("   %d\n", cnt);
+	cnt = ft_printf("%p", NULL);
+	ft_printf("   %d\n", cnt);
+	cnt = ft_printf("%d", NULL);
+	ft_printf("   %d\n", cnt);
+	cnt = ft_printf("%i", NULL);
+	ft_printf("   %d\n", cnt);
+	cnt = ft_printf("%u", NULL);
+	ft_printf("   %d\n", cnt);
+	cnt = ft_printf("%x", NULL);
+	ft_printf("   %d\n", cnt);
+	cnt = ft_printf("%X", NULL);
+	ft_printf("   %d\n", cnt);
 	return (0);
 }
