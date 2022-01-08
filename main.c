@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 15:02:09 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/07 18:31:52 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/08 18:32:43 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "libft/libft.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
 int	main(void)
 {
@@ -103,5 +104,16 @@ int	main(void)
 	ft_printf("   %d\n", cnt);
 	cnt = ft_printf("%X", NULL);
 	ft_printf("   %d\n", cnt);
+	printf("\n-----------type p error case-------------\n");
+	cnt = printf("%p    %p\n", LONG_MIN, LONG_MAX);
+	printf("cnt = %d\n", cnt);
+	cnt = ft_printf("%p    %p\n", LONG_MIN, LONG_MAX);
+	ft_printf("cnt = %d\n", cnt);
+	printf("--------------------------------\n");
+	cnt = printf("%p    %p\n", ULONG_MAX, -ULONG_MAX);
+	printf("cnt = %d\n", cnt);
+	cnt = ft_printf("%p    %p\n", ULONG_MAX, -ULONG_MAX);
+	ft_printf("cnt = %d\n", cnt);
+	printf("--------------------------------\n");
 	return (0);
 }
