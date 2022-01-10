@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 15:02:09 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/08 18:32:43 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/10 16:16:28 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,11 @@ int	main(void)
 	cnt = printf("%p    %p\n", ULONG_MAX, -ULONG_MAX);
 	printf("cnt = %d\n", cnt);
 	cnt = ft_printf("%p    %p\n", ULONG_MAX, -ULONG_MAX);
+	ft_printf("cnt = %d\n", cnt);
+	printf("--------------------------------\n");
+	cnt = printf("  %p    %p  \n", 0, 0);
+	printf("cnt = %d\n", cnt);
+	cnt = ft_printf("  %p    %p  \n", 0, 0);
 	ft_printf("cnt = %d\n", cnt);
 	printf("--------------------------------\n");
 	return (0);

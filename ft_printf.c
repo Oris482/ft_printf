@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 17:47:23 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/07 19:26:46 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/10 16:13:47 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,27 @@ int	address_hex(void *address)
 {
 	unsigned long long	dec_add;
 	int					cnt;
+	int					idx;
+	char				converted_add[17];
 
-	cnt = 2;
+	cnt = 0;
 	dec_add = (unsigned long long)address;
 	write(1, "0x", 2);
-
-	return (cnt + cal_len(dec_add, "p"));
+	if (dec_add == 0)
+	{
+		write(1, "0", 1);
+		cnt++;
+	}
+	while (dec_add != 0)
+	{
+		converted_add[cnt] = LOWER_HEX[(dec_add % 16)];
+		dec_add = dec_add / 16;
+		cnt++;
+	}
+	idx = cnt;
+	while (idx-- != 0)
+		write(1, &converted_add[idx], 1);
+	return (2 + cnt);
 }
 
 int	print_var(va_list *ap, t_property *var_p)

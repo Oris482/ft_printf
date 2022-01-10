@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 16:31:40 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/07 19:25:07 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/10 15:46:05 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static long long	set_minvalue(char *type)
 {
 	long long	minvalue;
 
-	if (*type == 'l' || *type == 'p')
+	if (*type == 'l')
 		minvalue = -9223372036854775807;
 	else
 		minvalue = -2147483648;
