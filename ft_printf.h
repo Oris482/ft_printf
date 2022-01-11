@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 17:47:54 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/05 16:48:06 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/11 15:44:59 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include <stdlib.h>
-# include <unistd.h>
 # define FLAGS "0-+ #"
 # define PRECISION "."
 # define TYPES "cspdiuxX%"

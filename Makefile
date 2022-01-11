@@ -6,7 +6,7 @@
 #    By: jaesjeon <jaesjeon@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 14:33:20 by jaesjeon          #+#    #+#              #
-#    Updated: 2022/01/04 19:59:00 by jaesjeon         ###   ########.fr        #
+#    Updated: 2022/01/11 15:45:59 by jaesjeon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,6 +70,8 @@ _LIBFTOBJS = $(LIBFTC:.c=.o)
 _PRINTFOBJS = $(PRINTFC:.c=.o)
 LIBFTOBJS = $(addprefix $(LIBFTODIR)/, $(_LIBFTOBJS))
 PRINTFOBJS = $(addprefix $(PRINTFODIR)/, $(_PRINTFOBJS))
+LIBFTHEADER = $(LIBFTODIR)/libft.h
+PRINTFHEADER = $(PRINTFODIR)/ft_printf.h
 
 .PHONY: all clean fclean re
 
@@ -78,7 +80,7 @@ all: $(NAME)
 $(NAME): $(LIBFTOBJS) $(PRINTFOBJS)
 	$(AR) $(ARFLAGS) $@ $^
 
-%.o: %.c libft.h ft_printf.h
+%.o: %.c $(LIBFTHEADER) $(PRINTFHEADER)
 
 clean:
 	$(RM) $(LIBFTOBJS) $(PRINTFOBJS)
