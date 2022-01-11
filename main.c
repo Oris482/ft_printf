@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 15:02:09 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/10 16:16:28 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/10 17:59:02 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(void)
 	int	int_max = 2147483647;
 	int	int_min = -2147483648;
 	unsigned int uint_min = (unsigned int)int_min;
-	
+/*	
 	cnt = printf("hello %s!\n", "student");
 	printf("len = %d\n", cnt);
 	cnt = ft_printf("hello %s!\n", "student");
@@ -115,10 +115,27 @@ int	main(void)
 	cnt = ft_printf("%p    %p\n", ULONG_MAX, -ULONG_MAX);
 	ft_printf("cnt = %d\n", cnt);
 	printf("--------------------------------\n");
-	cnt = printf("  %p    %p  \n", 0, 0);
+	cnt = printf("origin : %p  %p ", 0, 0);
 	printf("cnt = %d\n", cnt);
-	cnt = ft_printf("  %p    %p  \n", 0, 0);
+	printf("\n");
+	cnt = ft_printf("myfunc : %p  %p ", 0, 0);
 	ft_printf("cnt = %d\n", cnt);
 	printf("--------------------------------\n");
+	*/
+	cnt = printf("%");
+	printf("%d\n", cnt);
+	cnt = ft_printf("%");
+	ft_printf("%d\n", cnt);
+	printf("-----------\n");
+	cnt = printf("%%%%%%%");
+	printf("%d\n", cnt);
+	cnt = ft_printf("%%%%%%%");
+	ft_printf("%d\n", cnt);
+	printf("-----------\n");
+	cnt = printf("%%%%%%%\n");
+	printf("%d\n", cnt);
+	cnt = ft_printf("%%%%%%%\n");
+	ft_printf("%d\n", cnt);
+	printf("-----------\n");
 	return (0);
 }

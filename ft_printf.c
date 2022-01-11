@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 17:47:23 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/10 16:13:47 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/10 17:57:11 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_printf(const char *str, ...)
 			var_p = make_struct((char **)&str);
 			if (var_p == NULL)
 				return (-1);
-			if (*(var_p->data_type) != 0)
+			if (var_p->data_type != NULL && *(var_p->data_type) != 0)
 				cnt += print_var(&ap, var_p);
 			free(var_p);
 		}
@@ -49,7 +49,7 @@ t_property	*make_struct(char **str)
 	var_p = (t_property *)ft_calloc(1, sizeof(t_property));
 	if (var_p == NULL)
 		return (NULL);
-	if (ft_strchr(TYPES, *((*str) + 1)) != 0)
+	if (*((*str) + 1) != 0 && ft_strchr(TYPES, *((*str) + 1)) != 0)
 	{
 		var_p->print_type = *((*str) + 1);
 		var_p->data_type = set_data_type((*str) + 1);
@@ -80,11 +80,12 @@ int	address_hex(void *address)
 
 	cnt = 0;
 	dec_add = (unsigned long long)address;
+	ft_bzero(converted_add, 17);
 	write(1, "0x", 2);
 	if (dec_add == 0)
 	{
 		write(1, "0", 1);
-		cnt++;
+		return (3);
 	}
 	while (dec_add != 0)
 	{
@@ -93,7 +94,7 @@ int	address_hex(void *address)
 		cnt++;
 	}
 	idx = cnt;
-	while (idx-- != 0)
+	while (idx-- > 0)
 		write(1, &converted_add[idx], 1);
 	return (2 + cnt);
 }
