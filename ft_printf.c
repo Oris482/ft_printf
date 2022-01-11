@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 17:47:23 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/10 17:57:11 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/11 15:19:47 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	ft_printf(const char *str, ...)
 			free(var_p);
 		}
 	}
+	va_end(ap);
 	return (cnt);
 }
 
