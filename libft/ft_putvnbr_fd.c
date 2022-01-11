@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 16:31:40 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/10 15:46:05 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/11 15:05:45 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_putvnbr_fd(long long n, char *type, int fd)
 	{
 		if (n == minvalue)
 		{
-			tail = base[(n % n_base) * (-1)];
+			tail = base[-1 * (n % n_base)];
 			n = n / n_base;
 		}
 		n *= (-1);
