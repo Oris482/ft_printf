@@ -2,7 +2,7 @@ Translate
 #!/bin/bash
 echo -e "\033[32;1m"NORM"\033[m"
 read $a
-norminette -R CheckForbiddenSourceHeader ./*.c ./*.h
+norminette -R CheckForbiddenSourceHeader ./*.c ./*.h ./*/*.c ./*/*.h
 
 #echo -e "\n\033\033[32;1m"Hyxogen-test"\033[m"
 #read $a
