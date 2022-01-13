@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 15:02:09 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/10 17:59:02 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/11 16:27:54 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,5 +137,10 @@ int	main(void)
 	cnt = ft_printf("%%%%%%%\n");
 	ft_printf("%d\n", cnt);
 	printf("-----------\n");
+	printf("wrong variable\n");
+	printf("%d, %d, %d\n", 1, 2);
+	ft_printf("%d, %d, %d\n", 1, 2);
+	printf("%d, %d, %d\n", 1, 2, 3, 4);
+	ft_printf("%d, %d, %d\n", 1, 2, 3, 4);
 	return (0);
 }
