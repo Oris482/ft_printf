@@ -6,7 +6,7 @@
 #    By: jaesjeon <jaesjeon@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 14:33:20 by jaesjeon          #+#    #+#              #
-#    Updated: 2022/01/13 18:27:11 by jaesjeon         ###   ########.fr        #
+#    Updated: 2022/01/13 18:40:10 by jaesjeon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ PRINTFC_BONUS = ft_printf_bonus.c	\
 _PRINTFOBJS = $(PRINTFC:.c=.o)
 _PRINTFOBJS_BONUS = $(PRINTFC_BONUS:.c=.o)
 PRINTFOBJS = $(addprefix $(PRINTFODIR)/, $(_PRINTFOBJS))
-PRINTFOBJS_BONUS = $(addprefix $(PRINTFODIR)/, $(_PRINTFOBJS_BONUS))
+PRINTFOBJS_BONUS = $(addprefix $(PRINTFODIR_BONUS)/, $(_PRINTFOBJS_BONUS))
 
 PRINTFHEADER = $(HEADERDIR)/ft_printf.h
 PRINTFHEADER_BONUS = $(HEADERDIR)/ft_printf_bonus.h
