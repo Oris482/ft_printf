@@ -6,12 +6,11 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 17:47:23 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/11 15:44:51 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/13 18:29:19 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
 
 int	ft_printf(const char *str, ...)
 {

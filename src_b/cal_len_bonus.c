@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cal_len.c                                          :+:      :+:    :+:   */
+/*   cal_len_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 17:22:08 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/10 18:00:55 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/13 18:29:29 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
 
 static long long	set_num(long long n, char *type)
 {

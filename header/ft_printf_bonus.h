@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/01 17:47:54 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/11 15:44:59 by jaesjeon         ###   ########.fr       */
+/*   Created: 2022/01/13 17:47:41 by jaesjeon          #+#    #+#             */
+/*   Updated: 2022/01/13 18:30:35 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef FT_PRINTF_BONUS_H
+# define FT_PRINTF_BONUS_H
 
 # include <stdarg.h>
+# include "../libft/libft.h"
 # define FLAGS "0-+ #"
 # define PRECISION "."
 # define TYPES "cspdiuxX%"

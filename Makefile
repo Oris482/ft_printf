@@ -6,31 +6,46 @@
 #    By: jaesjeon <jaesjeon@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 14:33:20 by jaesjeon          #+#    #+#              #
-#    Updated: 2022/01/13 17:39:26 by jaesjeon         ###   ########.fr        #
+#    Updated: 2022/01/13 18:27:11 by jaesjeon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror -I.
+CFLAGS = -Wall -Wextra -Werror -I$(HEADERDIR)
+
 NAME = libftprintf.a
 LIBFT = libft.a
+LIBFTDIR = ./libft
+
 AR = ar
 ARFLAGS = -rcus
-LIBFTDIR = ./libft
-PRINTFCDIR = .
-PRINTFODIR = .
+
+PRINTFCDIR = ./src_m
+PRINTFODIR = ./src_m
+PRINTFCDIR_BONUS = ./src_b
+PRINTFODIR_BONUS = ./src_b
+
+HEADERDIR = ./header
+
 PRINTFC = ft_printf.c	\
 		  cal_len.c
-PRINTFC_BONUS =
+PRINTFC_BONUS = ft_printf_bonus.c	\
+				cal_len_bonus.c
+
 _PRINTFOBJS = $(PRINTFC:.c=.o)
-_PRINTFOBJS_BONUS = $(PRINTFC:.c=.o)
+_PRINTFOBJS_BONUS = $(PRINTFC_BONUS:.c=.o)
 PRINTFOBJS = $(addprefix $(PRINTFODIR)/, $(_PRINTFOBJS))
 PRINTFOBJS_BONUS = $(addprefix $(PRINTFODIR)/, $(_PRINTFOBJS_BONUS))
-PRINTFHEADER = $(PRINTFODIR)/ft_printf.h
+
+PRINTFHEADER = $(HEADERDIR)/ft_printf.h
+PRINTFHEADER_BONUS = $(HEADERDIR)/ft_printf_bonus.h
 
 ifdef WITH_BONUS
-	PRINTFOBJS += $(PRINTFOBJS_BONUS)
+	PRINTFCDIR = $(PRINTFCDIR_BONUS)
+	PRINTFODIR = $(PRINTFODIR_BONUS)
+	PRINTFOBJS = $(PRINTFOBJS_BONUS)
+	PRINTFHEADER = $(PRINTFHEADER_BONUS)
 endif
 
 .PHONY: all clean fclean re bonus
@@ -42,15 +57,15 @@ $(NAME): $(PRINTFOBJS)
 	cp $(LIBFTDIR)/$(LIBFT) $@
 	$(AR) $(ARFLAGS) $@ $^
 
-%.o: %.c $(PRINTFHEADER)
+$(PRINTFODIR)/%.o: $(PRINTFCDIR)/%.c $(PRINTFHEADER)
 
 clean:
 	make clean -C $(LIBFTDIR)
-	$(RM) $(PRINTFOBJS)
+	$(RM) $(PRINTFOBJS) $(PRINTFOBJS_BONUS)
 
 fclean:
 	make fclean -C $(LIBFTDIR)
-	$(RM) $(PRINTFOBJS)
+	$(RM) $(PRINTFOBJS) $(PRINTFOBJS_BONUS)
 	$(RM) $(NAME)
 
 re: fclean all

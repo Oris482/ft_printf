@@ -6,15 +6,15 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 15:02:09 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/11 16:27:54 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/13 18:35:04 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft/libft.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
+
+int ft_printf(const char *str, ...);
 
 int	main(void)
 {
