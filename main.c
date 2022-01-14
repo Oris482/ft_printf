@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 15:02:09 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/13 18:35:04 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/13 19:25:57 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,9 @@ int	main(void)
 	cnt = ft_printf("cnt = %p\n", &mall);
 	ft_printf("%d\n", cnt);
 	printf("--------------------------------\n");
-
+	*/
+	cnt = printf("%c", NULL);
+	printf("   %d\n", cnt);
 	cnt = ft_printf("%c", NULL);
 	ft_printf("   %d\n", cnt);
 	ft_printf("--------------------\n");
@@ -121,7 +123,7 @@ int	main(void)
 	cnt = ft_printf("myfunc : %p  %p ", 0, 0);
 	ft_printf("cnt = %d\n", cnt);
 	printf("--------------------------------\n");
-	*/
+	/*
 	cnt = printf("%");
 	printf("%d\n", cnt);
 	cnt = ft_printf("%");
@@ -142,5 +144,6 @@ int	main(void)
 	ft_printf("%d, %d, %d\n", 1, 2);
 	printf("%d, %d, %d\n", 1, 2, 3, 4);
 	ft_printf("%d, %d, %d\n", 1, 2, 3, 4);
+	*/
 	return (0);
 }

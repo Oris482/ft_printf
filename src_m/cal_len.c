@@ -6,11 +6,11 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 17:22:08 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/13 18:29:10 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/13 18:49:16 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../header/ft_printf.h"
 
 static long long	set_num(long long n, char *type)
 {

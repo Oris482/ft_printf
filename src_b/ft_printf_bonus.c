@@ -6,11 +6,11 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 17:48:05 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/13 18:29:34 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/13 19:24:42 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf_bonus.h"
+#include "../header/ft_printf_bonus.h"
 
 int	ft_printf(const char *str, ...)
 {
@@ -41,24 +41,6 @@ int	ft_printf(const char *str, ...)
 	return (cnt);
 }
 
-t_property	*make_struct(char **str)
-{
-	t_property	*var_p;
-
-	var_p = (t_property *)ft_calloc(1, sizeof(t_property));
-	if (var_p == NULL)
-		return (NULL);
-	if (*((*str) + 1) != 0 && ft_strchr(TYPES, *((*str) + 1)) != 0)
-	{
-		var_p->print_type = *((*str) + 1);
-		var_p->data_type = set_data_type((*str) + 1);
-		*str = (*str) + 2;
-	}
-	else
-		(*str)++;
-	return (var_p);
-}
-
 char	*set_data_type(char *str)
 {
 	if (*str == 'c' || *str == 'd' || *str == 'i'\
@@ -70,32 +52,26 @@ char	*set_data_type(char *str)
 		return ("%");
 }
 
-int	address_hex(void *address)
+void	address_hex(void *address)
 {
 	unsigned long long	dec_add;
-	int					cnt;
 	int					idx;
 	char				converted_add[17];
 
-	cnt = 0;
+	idx = 0;
 	dec_add = (unsigned long long)address;
 	ft_bzero(converted_add, 17);
 	write(1, "0x", 2);
 	if (dec_add == 0)
-	{
 		write(1, "0", 1);
-		return (3);
-	}
 	while (dec_add != 0)
 	{
-		converted_add[cnt] = LOWER_HEX[(dec_add % 16)];
+		converted_add[idx] = LOWER_HEX[(dec_add % 16)];
 		dec_add = dec_add / 16;
-		cnt++;
+		idx++;
 	}
-	idx = cnt;
 	while (idx-- > 0)
 		write(1, &converted_add[idx], 1);
-	return (2 + cnt);
 }
 
 int	print_var(va_list *ap, t_property *var_p)
@@ -119,7 +95,7 @@ int	print_var(va_list *ap, t_property *var_p)
 	else if (var_p->print_type == 'c')
 		write(1, &var, 1);
 	else if (var_p->print_type == 'p')
-		return (address_hex((void *)var));
+		address_hex((void *)var);
 	else
 		ft_putvnbr_fd(var, &(var_p->print_type), 1);
 	cnt = cal_len(var, &(var_p->print_type));
