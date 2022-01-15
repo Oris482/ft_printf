@@ -6,11 +6,27 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 17:48:05 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/13 19:24:42 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/15 18:04:20 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/ft_printf_bonus.h"
+
+static int testfunc_print_struct(t_property *var_p)
+{
+	printf("len_origin = %d\n", var_p->len_origin);
+	printf("f_zero = %d\n", var_p->f_zero);
+	printf("f_minus = %d\n", var_p->f_minus);
+	printf("f_plus = %d\n", var_p->f_plus);
+	printf("f_space = %d\n", var_p->f_space);
+	printf("f_pound = %d\n", var_p->f_pound);
+	printf("w_int = %d\n", var_p->w_int);
+	printf("p_dot = %d\n", var_p->p_dot);
+	printf("p_int = %d\n", var_p->p_int);
+	printf("print_type = %c\n", var_p->print_type);
+	printf("data_type = %s\n", var_p->data_type);
+	return (0);
+}
 
 int	ft_printf(const char *str, ...)
 {
@@ -29,9 +45,11 @@ int	ft_printf(const char *str, ...)
 		}
 		if (*str == '%')
 		{
-			var_p = make_struct((char **)&str);
+			var_p = make_struct(ap, (char **)&str);
 			if (var_p == NULL)
 				return (-1);
+			//testfunc
+			return (testfunc_print_struct(var_p));
 			if (var_p->data_type != NULL && *(var_p->data_type) != 0)
 				cnt += print_var(&ap, var_p);
 			free(var_p);

@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 17:47:41 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/13 20:45:36 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/15 18:04:29 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # define WIDTH "*"
 # define PRECISION "."
 # define TYPES "cspdiuxX%"
+//testfunc
+# include <stdio.h>
 
 typedef struct s_property
 {
@@ -40,5 +42,5 @@ char		*set_data_type(char *str);
 void		address_hex(void *address);
 int			print_var(va_list *ap, t_property *var_p);
 int			cal_len(long long var, char *type);
-t_property	*make_struct(char **str);
+t_property	*make_struct(va_list ap, char **str);
 #endif
