@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 18:41:44 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/15 17:56:26 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/15 18:37:26 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,16 @@
 
 static int	inputed_dec(va_list ap, char **str)
 {
-	char	*c;
 	int		ret;
 
-	c = *str;
 	ret = 0;
-	if (*c == '*')
+	if (*(*str) == '*')
 		ret = (int)va_arg(ap, int);
 	else
 	{
-		while (*c >= '0' && *c <= '9')
+		while (*(*str) >= '0' && *(*str) <= '9')
 		{
-			ret = ret * 10 + (*c - 48);
+			ret = ret * 10 + (*(*str) - 48);
 			(*str)++;
 		}
 		(*str)--;
@@ -35,21 +33,18 @@ static int	inputed_dec(va_list ap, char **str)
 
 static void	find_flags(t_property *var_p, char **str)
 {
-	char	*c;
-
-	c = *str;
 	(*str)++;
-	while (*c != '\0' && ft_strchr(FLAGS, *c))
+	while (*(*str) != '\0' && ft_strchr(FLAGS, *(*str)))
 	{
-		if (*c == '0')
+		if (*(*str) == '0')
 			var_p->f_zero = 1;
-		else if (*c == '-')
+		else if (*(*str) == '-')
 			var_p->f_minus = 1;
-		else if (*c == '+')
+		else if (*(*str) == '+')
 			var_p->f_plus = 1;
-		else if (*c == ' ')
+		else if (*(*str) == ' ')
 			var_p->f_space = 1;
-		else if (*c == '#')
+		else if (*(*str) == '#')
 			var_p->f_pound = 1;
 		(*str)++;
 	}
@@ -57,15 +52,13 @@ static void	find_flags(t_property *var_p, char **str)
 
 static void	find_width(va_list ap, t_property *var_p, char **str)
 {
-	char	*c;
 	int		cal_wid;
 
-	c = *str;
-	while (*c != '\0' && (ft_strchr(WIDTH, *c) || ft_strchr(DEC, *c) || \
-			ft_strchr(FLAGS, *c)))
+	while (*(*str) != '\0' && (ft_strchr(WIDTH, *(*str)) || \
+				ft_strchr(DEC, *(*str)) || ft_strchr(FLAGS, *(*str))))
 	{
 		cal_wid = 0;
-		if (ft_strchr(FLAGS, *c))
+		if (ft_strchr(FLAGS, *(*str)))
 			;
 		else
 			cal_wid = inputed_dec(ap, str);
@@ -76,21 +69,24 @@ static void	find_width(va_list ap, t_property *var_p, char **str)
 
 static void	find_precision(va_list ap, t_property *var_p, char **str)
 {
-	char	*c;
-
-	c = *str;
-	if (*c != '*')
-		return ;
-	while (*c != '\0' && (ft_strchr(PRECISION, *c) || ft_strchr(FLAGS, *c) || \
-			ft_strchr(WIDTH, *c)))
+	while (*(*str) != '\0' && (ft_strchr(PRECISION, *(*str)) || \
+				ft_strchr(DEC, *(*str)) || ft_strchr(FLAGS, *(*str)) || \
+				ft_strchr(WIDTH, *(*str))))
 	{
-		var_p->p_dot = 1;
-		if (*c == '.')
+		if (*(*str) == '.')
+		{
+			var_p->p_dot = 1;
 			var_p->p_int = 0;
+		}
 		(*str)++;
-		if (ft_strchr(DEC, *c) || *c == '*')
-			var_p->p_int = inputed_dec(ap, str);
-		(*str)++;
+		if (var_p->p_dot == 1 && (ft_strchr(DEC, *(*str)) || *(*str) == '*'))
+		{
+			if (var_p->p_int == 0)
+			{
+				var_p->p_int = inputed_dec(ap, str);
+				(*str)++;
+			}
+		}
 	}
 }
 
@@ -104,13 +100,11 @@ t_property	*make_struct(va_list ap, char **str)
 	find_flags(var_p, str);
 	find_width(ap, var_p, str);
 	find_precision(ap, var_p, str);
-	if (*((*str) + 1) != 0 && ft_strchr(TYPES, *((*str) + 1)) != 0)
+	if (*(*str) != 0 && ft_strchr(TYPES, *(*str)) != 0)
 	{
-		var_p->print_type = *((*str) + 1);
-		var_p->data_type = set_data_type((*str) + 1);
-		*str = (*str) + 2;
+		var_p->print_type = *(*str);
+		var_p->data_type = set_data_type(*str);
+		*str = (*str) + 1;
 	}
-	else
-		(*str)++;
 	return (var_p);
 }

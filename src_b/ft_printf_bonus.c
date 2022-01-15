@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 17:48:05 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/15 18:04:20 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/15 18:58:15 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int testfunc_print_struct(t_property *var_p)
 {
-	printf("len_origin = %d\n", var_p->len_origin);
+	printf("\n------------\nlen_origin = %d\n", var_p->len_origin);
 	printf("f_zero = %d\n", var_p->f_zero);
 	printf("f_minus = %d\n", var_p->f_minus);
 	printf("f_plus = %d\n", var_p->f_plus);
@@ -49,7 +49,7 @@ int	ft_printf(const char *str, ...)
 			if (var_p == NULL)
 				return (-1);
 			//testfunc
-			return (testfunc_print_struct(var_p));
+			testfunc_print_struct(var_p);
 			if (var_p->data_type != NULL && *(var_p->data_type) != 0)
 				cnt += print_var(&ap, var_p);
 			free(var_p);
@@ -98,11 +98,8 @@ int	print_var(va_list *ap, t_property *var_p)
 	long long	var;
 
 	if (*(var_p->data_type) == '%')
-	{
-		write(1, "%", 1);
-		return (1);
-	}
-	if (*(var_p->data_type) == '4')
+		var = (long long)'%';
+	else if (*(var_p->data_type) == '4')
 		var = (long long)va_arg(*ap, int);
 	else
 		var = (long long)va_arg(*ap, void *);
@@ -110,7 +107,7 @@ int	print_var(va_list *ap, t_property *var_p)
 		var = (long long)("(null)");
 	if (var_p->print_type == 's')
 		ft_putstr_fd((char *)var, 1);
-	else if (var_p->print_type == 'c')
+	else if (var_p->print_type == 'c' || var_p->print_type == '%')
 		write(1, &var, 1);
 	else if (var_p->print_type == 'p')
 		address_hex((void *)var);

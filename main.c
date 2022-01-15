@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 15:02:09 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/13 19:25:57 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/15 19:00:35 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int	main(void)
 	ft_printf("%d\n", cnt);
 	printf("--------------------------------\n");
 	*/
+	/*
 	cnt = printf("%c", NULL);
 	printf("   %d\n", cnt);
 	cnt = ft_printf("%c", NULL);
@@ -123,6 +124,7 @@ int	main(void)
 	cnt = ft_printf("myfunc : %p  %p ", 0, 0);
 	ft_printf("cnt = %d\n", cnt);
 	printf("--------------------------------\n");
+	*/
 	/*
 	cnt = printf("%");
 	printf("%d\n", cnt);
@@ -145,5 +147,6 @@ int	main(void)
 	printf("%d, %d, %d\n", 1, 2, 3, 4);
 	ft_printf("%d, %d, %d\n", 1, 2, 3, 4);
 	*/
+	ft_printf("hello, %+- #0#3*33*23400#12.*123.1#@% eoul!");
 	return (0);
 }
