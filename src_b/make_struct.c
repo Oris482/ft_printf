@@ -6,19 +6,19 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 18:41:44 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/15 18:37:26 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/17 19:07:11 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/ft_printf_bonus.h"
 
-static int	inputed_dec(va_list ap, char **str)
+static int	inputed_dec(va_list *ap, char **str)
 {
 	int		ret;
 
 	ret = 0;
 	if (*(*str) == '*')
-		ret = (int)va_arg(ap, int);
+		ret = (int)va_arg(*ap, int);
 	else
 	{
 		while (*(*str) >= '0' && *(*str) <= '9')
@@ -50,7 +50,7 @@ static void	find_flags(t_property *var_p, char **str)
 	}
 }
 
-static void	find_width(va_list ap, t_property *var_p, char **str)
+static void	find_width(va_list *ap, t_property *var_p, char **str)
 {
 	int		cal_wid;
 
@@ -67,7 +67,7 @@ static void	find_width(va_list ap, t_property *var_p, char **str)
 	}
 }
 
-static void	find_precision(va_list ap, t_property *var_p, char **str)
+static void	find_precision(va_list *ap, t_property *var_p, char **str)
 {
 	while (*(*str) != '\0' && (ft_strchr(PRECISION, *(*str)) || \
 				ft_strchr(DEC, *(*str)) || ft_strchr(FLAGS, *(*str)) || \
@@ -90,7 +90,7 @@ static void	find_precision(va_list ap, t_property *var_p, char **str)
 	}
 }
 
-t_property	*make_struct(va_list ap, char **str)
+t_property	*make_struct(va_list *ap, char **str)
 {
 	t_property	*var_p;
 
@@ -104,6 +104,16 @@ t_property	*make_struct(va_list ap, char **str)
 	{
 		var_p->print_type = *(*str);
 		var_p->data_type = set_data_type(*str);
+		if (*(var_p->data_type) == '%')
+			var_p->var = (long long)'%';
+		else if (*(var_p->data_type) == '4')
+			var_p->var = (long long)va_arg(*ap, int);
+		else
+			var_p->var = (long long)va_arg(*ap, void *);
+		if (var_p->print_type == 's' && (void *)var_p->var == NULL)
+			var_p->var = (long long)("(null)");
+		var_p->len_origin = cal_len(var_p->var, var_p->print_type);
+		adjust_struct(var_p);
 		*str = (*str) + 1;
 	}
 	return (var_p);

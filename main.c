@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 15:02:09 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/15 19:00:35 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/17 19:08:24 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,6 @@ int	main(void)
 	printf("%d, %d, %d\n", 1, 2, 3, 4);
 	ft_printf("%d, %d, %d\n", 1, 2, 3, 4);
 	*/
-	ft_printf("hello, %+- #0#3*33*23400#12.*123.1#@% eoul!");
+	ft_printf("%+ d, %+s, % s, %+ + p", 42, "s42", "s42", &int_max);
 	return (0);
 }

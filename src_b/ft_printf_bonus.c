@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 17:48:05 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/15 18:58:15 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/17 18:36:17 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,29 +45,18 @@ int	ft_printf(const char *str, ...)
 		}
 		if (*str == '%')
 		{
-			var_p = make_struct(ap, (char **)&str);
+			var_p = make_struct(&ap, (char **)&str);
 			if (var_p == NULL)
 				return (-1);
 			//testfunc
 			testfunc_print_struct(var_p);
 			if (var_p->data_type != NULL && *(var_p->data_type) != 0)
-				cnt += print_var(&ap, var_p);
+				cnt += print_var(var_p);
 			free(var_p);
 		}
 	}
 	va_end(ap);
 	return (cnt);
-}
-
-char	*set_data_type(char *str)
-{
-	if (*str == 'c' || *str == 'd' || *str == 'i'\
-			|| *str == 'u' || *str == 'x' || *str == 'X')
-		return ("4");
-	else if (*str == 's' || *str == 'p')
-		return ("8");
-	else
-		return ("%");
 }
 
 void	address_hex(void *address)
@@ -92,19 +81,12 @@ void	address_hex(void *address)
 		write(1, &converted_add[idx], 1);
 }
 
-int	print_var(va_list *ap, t_property *var_p)
+int	print_var(t_property *var_p)
 {
 	int			cnt;
 	long long	var;
 
-	if (*(var_p->data_type) == '%')
-		var = (long long)'%';
-	else if (*(var_p->data_type) == '4')
-		var = (long long)va_arg(*ap, int);
-	else
-		var = (long long)va_arg(*ap, void *);
-	if (var_p->print_type == 's' && (void *)var == NULL)
-		var = (long long)("(null)");
+	var = var_p->var;
 	if (var_p->print_type == 's')
 		ft_putstr_fd((char *)var, 1);
 	else if (var_p->print_type == 'c' || var_p->print_type == '%')
@@ -113,6 +95,6 @@ int	print_var(va_list *ap, t_property *var_p)
 		address_hex((void *)var);
 	else
 		ft_putvnbr_fd(var, &(var_p->print_type), 1);
-	cnt = cal_len(var, &(var_p->print_type));
+	cnt = var_p->len_origin;
 	return (cnt);
 }
