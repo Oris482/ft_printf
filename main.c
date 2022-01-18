@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 15:02:09 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/17 19:08:24 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/18 20:34:45 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	main(void)
 {
 	int	cnt;
 	char *mall;
-	int	int_max = 2147483647;
-	int	int_min = -2147483648;
+	int	int_max = INT_MAX;
+	int	int_min = INT_MIN;
 	unsigned int uint_min = (unsigned int)int_min;
 /*	
 	cnt = printf("hello %s!\n", "student");
@@ -147,6 +147,17 @@ int	main(void)
 	printf("%d, %d, %d\n", 1, 2, 3, 4);
 	ft_printf("%d, %d, %d\n", 1, 2, 3, 4);
 	*/
-	ft_printf("%+ d, %+s, % s, %+ + p", 42, "s42", "s42", &int_max);
+	//ft_printf("%+ d, %+s, % s, %+ + p", 42, "s42", "s42", &int_max);
+	//printf("%%###000- - - + 123.#23.-+ .30d");
+	//ft_printf("%###000- - - + 123.#23.12-+ .30d\n", 42);
+	//ft_printf("%10.d\n", 0);
+	//ft_printf("%010cend\n", 'A');
+	//ft_printf("%0# 10.3send\n", "hello");
+	//printf("%0# 10.3send\n", "hello");
+	ft_printf("%+5d\n", 4242);
+	ft_printf("% 5i\n", 4242);
+	ft_printf("%#5x\n", 4242);
+	ft_printf("%#5X\n", 4242);
+	ft_printf("%5u\n", 4242);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: jaesjeon <jaesjeon@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 14:33:20 by jaesjeon          #+#    #+#              #
-#    Updated: 2022/01/17 18:21:59 by jaesjeon         ###   ########.fr        #
+#    Updated: 2022/01/18 19:24:17 by jaesjeon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,10 +30,16 @@ HEADERDIR = ./header
 
 PRINTFC = ft_printf.c	\
 		  cal_len.c
-PRINTFC_BONUS = ft_printf_bonus.c	\
-				cal_len_bonus.c		\
-				make_struct.c		\
-				utils_struct.c
+PRINTFC_BONUS = ft_printf_bonus.c		\
+				cal_len_bonus.c			\
+				make_struct_bonus.c		\
+				utils_struct_bonus.c	\
+				make_frame_bonus.c		\
+				make_num_bonus.c		\
+				type_character_bonus.c	\
+				type_string_bonus.c		\
+				type_pointer_bonus.c	\
+				type_numbers_bonus.c
 
 _PRINTFOBJS = $(PRINTFC:.c=.o)
 _PRINTFOBJS_BONUS = $(PRINTFC_BONUS:.c=.o)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   make_struct.c                                      :+:      :+:    :+:   */
+/*   make_struct_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 18:41:44 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/17 19:07:11 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/18 20:29:31 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ t_property	*make_struct(va_list *ap, char **str)
 		var_p->print_type = *(*str);
 		var_p->data_type = set_data_type(*str);
 		if (*(var_p->data_type) == '%')
-			var_p->var = (long long)'%';
+			var_p->var = (long long)('%');
 		else if (*(var_p->data_type) == '4')
 			var_p->var = (long long)va_arg(*ap, int);
 		else

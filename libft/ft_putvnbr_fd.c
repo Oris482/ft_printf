@@ -6,11 +6,12 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 16:31:40 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/11 15:05:45 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/18 17:07:13 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <limits.h>
 
 static	void	ft_sepptr(long long n, char *base, int n_base, int fd)
 {
@@ -28,9 +29,9 @@ static long long	set_minvalue(char *type)
 	long long	minvalue;
 
 	if (*type == 'l')
-		minvalue = -9223372036854775807;
+		minvalue = LONG_MIN;
 	else
-		minvalue = -2147483648;
+		minvalue = INT_MIN;
 	return (minvalue);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.k       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 17:48:05 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/17 18:36:17 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/18 19:28:52 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ static int testfunc_print_struct(t_property *var_p)
 	printf("p_int = %d\n", var_p->p_int);
 	printf("print_type = %c\n", var_p->print_type);
 	printf("data_type = %s\n", var_p->data_type);
+	printf("return value = %d\n", var_p->full_size);
+	write(1, "var = ", 6);
+	print_var(var_p);
+	printf("\n----------------------------\n");
 	return (0);
 }
 
@@ -59,42 +63,26 @@ int	ft_printf(const char *str, ...)
 	return (cnt);
 }
 
-void	address_hex(void *address)
-{
-	unsigned long long	dec_add;
-	int					idx;
-	char				converted_add[17];
-
-	idx = 0;
-	dec_add = (unsigned long long)address;
-	ft_bzero(converted_add, 17);
-	write(1, "0x", 2);
-	if (dec_add == 0)
-		write(1, "0", 1);
-	while (dec_add != 0)
-	{
-		converted_add[idx] = LOWER_HEX[(dec_add % 16)];
-		dec_add = dec_add / 16;
-		idx++;
-	}
-	while (idx-- > 0)
-		write(1, &converted_add[idx], 1);
-}
-
 int	print_var(t_property *var_p)
 {
 	int			cnt;
 	long long	var;
+	char		*frame;
 
+	frame = make_frame(var_p);
+	if (frame == NULL)
+		return (-1);
 	var = var_p->var;
 	if (var_p->print_type == 's')
-		ft_putstr_fd((char *)var, 1);
+		print_s(var_p, frame);
+	else if (var_p->print_type == 'c')
+		print_c(var_p, frame);
 	else if (var_p->print_type == 'c' || var_p->print_type == '%')
 		write(1, &var, 1);
 	else if (var_p->print_type == 'p')
-		address_hex((void *)var);
+		print_p(var_p, frame);
 	else
-		ft_putvnbr_fd(var, &(var_p->print_type), 1);
+		print_num(var_p, frame);
 	cnt = var_p->len_origin;
 	return (cnt);
 }

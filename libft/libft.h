@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 10:17:29 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/04 17:38:41 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/18 17:05:52 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
 # define DEC "0123456789"
 # define LOWER_HEX "0123456789abcdef"
 # define UPPER_HEX "0123456789ABCDEF"
