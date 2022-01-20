@@ -6,7 +6,7 @@
 #    By: jaesjeon <jaesjeon@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 14:33:20 by jaesjeon          #+#    #+#              #
-#    Updated: 2022/01/13 17:18:07 by jaesjeon         ###   ########.fr        #
+#    Updated: 2022/01/20 19:32:16 by jaesjeon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ SRCS = ft_memset.c	\
 		ft_strmapi.c	\
 		ft_striteri.c	\
 		ft_putchar_fd.c	\
+		ft_rputchar_fd.c	\
 		ft_putstr_fd.c	\
 		ft_putendl_fd.c	\
 		ft_putnbr_fd.c	\
