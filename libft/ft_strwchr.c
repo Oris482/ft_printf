@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_strwchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaesjeon <jaesjeon@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/20 16:56:10 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/21 21:05:26 by jaesjeon         ###   ########.fr       */
+/*   Created: 2022/01/21 20:42:20 by jaesjeon          #+#    #+#             */
+/*   Updated: 2022/01/21 20:43:14 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/ft_printf_bonus.h"
+#include "libft.h"
 
-int	ft_printf(const char *str, ...)
+int	ft_strwchr(const char *s, int c)
 {
-	va_list	ap;
-	int		cnt;
-	int		tmp;
-	int		status[1];
-	t_prop	*var_p;
+	int idx;
 
-	va_start(ap, str);
-	cnt = 0;
-	status[0] = 0;
-	var_p = NULL;
-	while (*str)
+	idx = 0;
+	while (*s != (char)c)
 	{
-		tmp = func_table(&status[0], str, &var_p, &ap);
-		if (tmp >= 0)
-			cnt += tmp;
-		else
-		{
-			cnt = -1;
-			break ;
-		}
+		if (*s == '\0')
+			return (-1);
+		s++;
+		idx++;
 	}
-	va_end(ap);
-	return (cnt);
+	return (idx);
 }

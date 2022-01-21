@@ -1,40 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_bonus.c                                  :+:      :+:    :+:   */
+/*   func_read.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaesjeon <jaesjeon@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/20 16:56:10 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/21 21:05:26 by jaesjeon         ###   ########.fr       */
+/*   Created: 2022/01/21 20:18:27 by jaesjeon          #+#    #+#             */
+/*   Updated: 2022/01/21 21:41:19 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/ft_printf_bonus.h"
 
-int	ft_printf(const char *str, ...)
+int	func_read(int *status, const char *str, t_prop **var_p, va_list ap)
 {
-	va_list	ap;
-	int		cnt;
-	int		tmp;
-	int		status[1];
-	t_prop	*var_p;
+	int	(*func_readlist[4])(int *, const char *, t_prop **, va_list);
 
-	va_start(ap, str);
-	cnt = 0;
-	status[0] = 0;
-	var_p = NULL;
-	while (*str)
-	{
-		tmp = func_table(&status[0], str, &var_p, &ap);
-		if (tmp >= 0)
-			cnt += tmp;
-		else
-		{
-			cnt = -1;
-			break ;
-		}
-	}
-	va_end(ap);
-	return (cnt);
+	if (*status == 0)
+		return (func_write(status, str, var_p));
+	func_readlist[1] = func_flags;
+	func_readlist[2] = func_width;
+	func_readlist[3] = func_precision;
+	return (func_readlist[*status](status, str, var_p, ap));
 }

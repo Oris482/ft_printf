@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 10:17:29 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/20 19:32:01 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/21 20:43:32 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 
 char	*ft_strchr(const char *s, int c);
+
+int		ft_strwchr(const char *st, int c);
 
 char	*ft_strrchr(const char *s, int c);
 
