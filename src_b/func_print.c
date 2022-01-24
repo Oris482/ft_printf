@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 20:19:42 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/21 21:44:01 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/24 15:10:02 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	func_print(int *status, const char *str, t_prop **var_p, va_list *ap)
 {
 	int	type;
-	int	(*func_printlist[9])(int, t_prop **, va_list);
+	int	(*func_printlist[9])(int, t_prop **, va_list *);
 
 	type = ft_strwchr(TYPES, *str);
 	if (type == 0)
@@ -29,5 +29,5 @@ int	func_print(int *status, const char *str, t_prop **var_p, va_list *ap)
 	func_printlist[7] = print_number;
 	func_printlist[8] = print_number;
 	*status = 0;
-	return (func_printlist[type](type, var_p, &ap)); 
+	return (func_printlist[type](type, var_p, ap));
 }

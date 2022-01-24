@@ -6,15 +6,15 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 20:18:27 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/21 21:41:19 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/24 15:08:50 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/ft_printf_bonus.h"
 
-int	func_read(int *status, const char *str, t_prop **var_p, va_list ap)
+int	func_read(int *status, const char *str, t_prop **var_p, va_list *ap)
 {
-	int	(*func_readlist[4])(int *, const char *, t_prop **, va_list);
+	int	(*func_readlist[4])(int *, const char *, t_prop **, va_list *);
 
 	if (*status == 0)
 		return (func_write(status, str, var_p));

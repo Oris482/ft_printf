@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 16:56:10 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/21 21:05:26 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/24 15:09:06 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_printf(const char *str, ...)
 	var_p = NULL;
 	while (*str)
 	{
-		tmp = func_table(&status[0], str, &var_p, &ap);
+		tmp = func_read(&status[0], str, &var_p, &ap);
 		if (tmp >= 0)
 			cnt += tmp;
 		else

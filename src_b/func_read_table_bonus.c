@@ -6,7 +6,7 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 20:18:39 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/21 21:41:28 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/24 15:07:53 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	func_flags(int *status, const char *str, t_prop **var_p, va_list *ap)
 {
 	if (ft_strchr(FLAGS, *str))
 	{
-		(*var_p)->flags | (1 << ft_strwchr(FLAGS, *str));
+		(*var_p)->flags = (*var_p)->flags | (1 << ft_strwchr(FLAGS, *str));
 		if (*str == '.')
 			*status = 3;
 	}
@@ -40,7 +40,7 @@ int	func_flags(int *status, const char *str, t_prop **var_p, va_list *ap)
 		(*var_p)->width = *str - '0';
 	}
 	else
-		return (func_print(status, str, var_p, &ap);
+		return (func_print(status, str, var_p, ap));
 	return (0);
 }
 
@@ -53,7 +53,7 @@ int	func_width(int *status, const char *str, t_prop **var_p, va_list *ap)
 	else if (*str == '.')
 		*status = 3;
 	else
-		return (func_print(status, str, var_p, &ap));
+		return (func_print(status, str, var_p, ap));
 	return (0);
 }
 
@@ -64,6 +64,6 @@ int	func_precision(int *status, const char *str, t_prop **var_p, va_list *ap)
 	else if (*str == '*')
 		(*var_p)->precision = (int)va_arg(*ap, int);
 	else
-		return (func_print(status, str, var_p, &ap));
+		return (func_print(status, str, var_p, ap));
 	return (0);
 }

@@ -6,16 +6,18 @@
 /*   By: jaesjeon <jaesjeon@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 20:36:29 by jaesjeon          #+#    #+#             */
-/*   Updated: 2022/01/21 21:44:27 by jaesjeon         ###   ########.fr       */
+/*   Updated: 2022/01/24 15:11:10 by jaesjeon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../header/ft_printf_bonus.h"
+
 int	print_percent(t_prop **var_p)
 {
-	(*var_p)->var = (long long)'%';
+	(*var_p)->var = (long long)('%');
 }
 
-int	print_c(int	type, t_prop **var_p, va_list *ap)
+int	print_c(int type, t_prop **var_p, va_list *ap)
 {
 	(*var_p)->var = (long long)va_arg(*ap, int);
 }
